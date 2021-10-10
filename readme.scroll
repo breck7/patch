@@ -10,9 +10,9 @@ paragraph
  design your query params so that they map to a TSV document.
  Then Patch encodes and decodes that document.
 
-title2 Quick Example
+section Quick Example
 
-code json
+jsonCode
  {
   "selection": "Canada",
   "year": "2000",
@@ -22,12 +22,12 @@ code json
 paragraph
  Serializing this Object Literal into a URL looks like:
 
-title5 Without Patch
+subsection Without Patch
 
 code
  selection=Canada&year=2000&tab=map
 
-title5 With Patch
+subsection With Patch
 
 code
  patch=selection~Canada...year~2000...tab~map
@@ -35,30 +35,30 @@ code
 paragraph
  The Patch is isomorphic to this TSV:
 
-code tsv
+tsvCode
  selection\tCanada
  year\t2000
  tab\tmap
 
-title2 Specification
+section Specification
 
-title4 The 4 Isomorphisms of Patch
+subsection The 4 Isomorphisms of Patch
 
 paragraph
  A Patch object has 4 forms:
 
-title4 1. URI encoded string form
+subsection 1. URI encoded string form
 
 code
  countries~Canada~France...year~2020
 
-title4 2. TSV form (or any similarly delimited form)
+subsection 2. TSV form (or any similarly delimited form)
 
 code
  countries\tCanada\tFrance
  year\t2020
 
-title4 3. JSON Superset Form (AKA Object Literal Form)
+subsection 3. JSON Superset Form (AKA Object Literal Form)
 
 code
  {
@@ -66,7 +66,7 @@ code
   "years": ["2020"],
  }
 
-title4 4. Javascript Matrix Form
+subsection 4. Javascript Matrix Form
 
 code
  [
@@ -79,7 +79,7 @@ paragraph
  sure to parse yourself as JSON does not support duplicate
  identifiers.
 
-title4 Delimiters
+subsection Delimiters
 
 paragraph
  Patch requires 2 delimiters, one for
@@ -88,26 +88,26 @@ paragraph
  for newlines. You can change those to suit your own
  preferences or needs.
 
-title4 Versioning
+subsection Versioning
 
 paragraph
  If needed, use semantic versioning, only caring
  about breaking changes so only a major version: `patchVersion=2&patch=`
 
-title4 Spaces
+subsection Spaces
 
 paragraph
  Patch encodes spaces to "+" instead of "%20" and
  uses the standard encoding of "+" to "%2B".
 
-title4 URI Encoding
+subsection URI Encoding
 
 paragraph
  String inputs to the Patch constructor are
  assumed to be encoded and will be decoded before parsing.
  Similarly the string output is always encoded.
 
-title3 When to use
+section When to use
 
 paragraph
  Patch comes in handy when you have 2-D languages that:
@@ -115,10 +115,9 @@ paragraph
 list
  - have state
  - that the user can change
- - that the user should be able to take with them and
-   rehydrate the class with via URLs
+ - that the user should be able to take with them and rehydrate the class with via URLs
 
-title3 Context
+section Context
 
 paragraph
  QueryString is a domain specific language for describing
@@ -148,7 +147,7 @@ paragraph
  suffers from JSONs lack of certain data structures, like
  tuple arrays.
 
-title4 Some benefits of Patch
+section Some benefits of Patch
 
 list
  1. A single place to encode and decode your params. Just encode/decode the whole patch. Do not decode/encode N times for every parameter nor invent a special encoding scheme for each param.
@@ -157,7 +156,10 @@ list
  4. Versioning with easy upgrading.
  5. Very easy to debug—it's just a patch!
 
-title4 History
+section History
 
 paragraph
  Patch was originally developed by <a href="https://ourworldindata.org/">https://ourworldindata.org/</a>. This is a fork.
+
+skipIndexPage
+permalink index
