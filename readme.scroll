@@ -1,16 +1,10 @@
 title Patch: a tiny DSL for isomorphic query strings
 
-paragraph
- Patch is a tiny library with zero external dependencies that
- provides an **immutable** object with 4 isomorphisms that
- maps to URI encoded query strings.
+* Patch is a tiny library with zero external dependencies that provides an *immutable* object with 4 isomorphisms that maps to URI encoded query strings.
 
-paragraph
- Patch gets its power from its isomorphisms. With Patch, you
- design your query params so that they map to a TSV document.
- Then Patch encodes and decodes that document.
+* Patch gets its power from its isomorphisms. With Patch, you design your query params so that they map to a TSV document. Then Patch encodes and decodes that document.
 
-section Quick Example
+# Quick Example
 
 jsonCode
  {
@@ -19,46 +13,43 @@ jsonCode
   "tab": "map"
  }
 
-paragraph
- Serializing this Object Literal into a URL looks like:
+* Serializing this Object Literal into a URL looks like:
 
-subsection Without Patch
+## Without Patch
 
 code
  selection=Canada&year=2000&tab=map
 
-subsection With Patch
+## With Patch
 
 code
  patch=selection~Canada...year~2000...tab~map
 
-paragraph
- The Patch is isomorphic to this TSV:
+* The Patch is isomorphic to this TSV:
 
 tsvCode
  selection\tCanada
  year\t2000
  tab\tmap
 
-section Specification
+# Specification
 
-subsection The 4 Isomorphisms of Patch
+## The 4 Isomorphisms of Patch
 
-paragraph
- A Patch object has 4 forms:
+* A Patch object has 4 forms:
 
-subsection 1. URI encoded string form
+## 1. URI encoded string form
 
 code
  countries~Canada~France...year~2020
 
-subsection 2. TSV form (or any similarly delimited form)
+## 2. TSV form (or any similarly delimited form)
 
 code
  countries\tCanada\tFrance
  year\t2020
 
-subsection 3. JSON Superset Form (AKA Object Literal Form)
+## 3. JSON Superset Form (AKA Object Literal Form)
 
 code
  {
@@ -66,7 +57,7 @@ code
   "years": ["2020"],
  }
 
-subsection 4. Javascript Matrix Form
+## 4. Javascript Matrix Form
 
 code
  [
@@ -74,92 +65,64 @@ code
   ["years", "2020", "France],
  ]
 
-paragraph
- Note: if you use form #3 and have duplicate identifiers, be
- sure to parse yourself as JSON does not support duplicate
- identifiers.
+* Note: if you use form #3 and have duplicate identifiers, be sure to parse yourself as JSON does not support duplicate identifiers.
 
-subsection Delimiters
+## Delimiters
 
-paragraph
- Patch requires 2 delimiters, one for
- separating "rows" and one for separating "columns".
- Currently for the delimiters we use "~" for tabs and "..."
- for newlines. You can change those to suit your own
- preferences or needs.
+* Patch requires 2 delimiters, one for separating "rows" and one for separating "columns". Currently for the delimiters we use "~" for tabs and "..." for newlines. You can change those to suit your own preferences or needs.
 
-subsection Versioning
+## Versioning
 
-paragraph
- If needed, use semantic versioning, only caring
- about breaking changes so only a major version: `patchVersion=2&patch=`
+* If needed, use semantic versioning, only caring about breaking changes so only a major version: `patchVersion=2&patch=`
 
-subsection Spaces
+## Spaces
 
-paragraph
- Patch encodes spaces to "+" instead of "%20" and
- uses the standard encoding of "+" to "%2B".
+* Patch encodes spaces to "+" instead of "%20" and uses the standard encoding of "+" to "%2B".
 
-subsection URI Encoding
+## URI Encoding
 
-paragraph
- String inputs to the Patch constructor are
- assumed to be encoded and will be decoded before parsing.
- Similarly the string output is always encoded.
+* String inputs to the Patch constructor are assumed to be encoded and will be decoded before parsing. Similarly the string output is always encoded.
 
-section When to use
+# When to use
 
-paragraph
- Patch comes in handy when you have 2-D languages that:
+* Patch comes in handy when you have 2-D languages that:
 
-list
- - have state
- - that the user can change
- - that the user should be able to take with them and rehydrate the class with via URLs
+- have state
+- that the user can change
+- that the user should be able to take with them and rehydrate the class with via URLs
 
-section Context
+# Context
 
-paragraph
- QueryString is a domain specific language for describing
- this structure:
+* QueryString is a domain specific language for describing this structure:
 
 code
  type UrlEncodedString = Omit&lt;string, [RestrictedCharacters]&gt;
  Map&lt;UrlEncodedString, UrlEncodedString&gt;
 
-paragraph
- It has a one very restricted string type, and does not have
- any concept of numbers, booleans, arrays, enums, trees,
- nested maps, et cetera.
+* It has a one very restricted string type, and does not have any concept of numbers, booleans, arrays, enums, trees, nested maps, et cetera.
 
-paragraph
- It is a very low level DSL; arguably adds little to no value
- on top of just a single string.
+* It is a very low level DSL; arguably adds little to no value on top of just a single string.
 
-paragraph
- Patch is a DSL let's you use any data structure you want and
- handles the compiling/decompiling to QueryString, while
- preserving human readability.
+* Patch is a DSL let's you use any data structure you want and handles the compiling/decompiling to QueryString, while preserving human readability.
 
-paragraph
- JSON would be a similar alternative to Patch, except you
- completely lose human readability in query strings, and it
- suffers from JSONs lack of certain data structures, like
- tuple arrays.
+* JSON would be a similar alternative to Patch, except you completely lose human readability in query strings, and it suffers from JSONs lack of certain data structures, like tuple arrays.
 
-section Some benefits of Patch
+# Some benefits of Patch
 
-list
- 1. A single place to encode and decode your params. Just encode/decode the whole patch. Do not decode/encode N times for every parameter nor invent a special encoding scheme for each param.
- 2. Cleanly encodes arrays and nested structures.
- 3. Improved human readability for short params; greatly improved readability for complex params.
- 4. Versioning with easy upgrading.
- 5. Very easy to debug—it's just a patch!
+- A single place to encode and decode your params. Just encode/decode the whole patch. Do not decode/encode N times for every parameter nor invent a special encoding scheme for each param.
+- Cleanly encodes arrays and nested structures.
+- Improved human readability for short params; greatly improved readability for complex params.
+- Versioning with easy upgrading.
+- Very easy to debug—it's just a patch!
 
-section History
+# History
 
-paragraph
- Patch was originally developed by <a href="https://ourworldindata.org/">https://ourworldindata.org/</a>. This is a fork.
+* Patch was originally developed by <a href="https://ourworldindata.org/">https://ourworldindata.org/</a>. This is a fork.
 
-skipIndexPage
-permalink index
+permalink index.html
+siteTitle Patch
+siteDescription A tiny DSL for isomorphic query strings
+github https://github.com/breck7/patch
+viewSourceBaseUrl https://github.com/breck7/patch/tree/master
+twitter https://twitter.com/breckyunits
+email patch@breckyunits.com

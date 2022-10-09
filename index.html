@@ -1,14 +1,14 @@
 <!doctype html>
 <!--
 
- This page was compiled by 📜 Scroll, the public domain
- static site publishing software.
+ This page was compiled by 📜 Scroll, a public domain
+ programming language and static site publishing tool.
  
  https://scroll.pub
  
  Generally you don't want to edit it by hand.
 
- Scroll v22.3.0
+ Scroll v35.1.0
 
 -->
 <html lang="en-US">
@@ -17,12 +17,12 @@
   <title>Patch: a tiny DSL for isomorphic query strings - Patch</title>
   <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
   <meta name="description" content="A tiny DSL for isomorphic query strings"></meta>
-  <meta name="generator" content="Scroll v22.3.0"></meta>
+  <meta name="generator" content="Scroll v35.1.0"></meta>
   <meta property="og:title" content="Patch: a tiny DSL for isomorphic query strings"></meta>
-  <meta property="og:description" content="Patch is a tiny library with zero external dependencies that provides an **immutable** object with 4 isomorphisms that maps to URI encoded query strings."></meta>
+  <meta property="og:description" content=""></meta>
   <meta property="og:image" content=""></meta>
   <meta name="twitter:card" content="summary_large_image"></meta>
-  <style>html,body,div,span,h1,h2,h3,h4,p,ol,ul,table {
+  <style>html,body,div,span,h1,h2,h3,h4,p,ol,ul,table,figure {
   margin: 0;
   padding: 0;
   border: 0;
@@ -74,7 +74,7 @@ html {
   text-decoration: none;
   color: rgba(204,204,204,.5);
 }
-.scrollIndexPageComponent,.scrollArticlePageComponent {
+.scrollGroupPageComponent,.scrollFilePageComponent {
   column-count: auto;
   column-fill: balance;
   column-width: 35ch;
@@ -84,11 +84,23 @@ html {
   padding-right: 20px;
   margin: auto;
 }
-.scrollArticlePageComponent {
+.scrollFilePageComponent {
   column-rule: none;
   padding-top: 8px;
 }
-.scrollIndexPageArticleContainerComponent {
+.scrollFilePageComponent .scrollTitleComponent {
+  display: none;
+}
+.scrollFilePageTitle {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.scrollFilePageTitle a {
+  text-decoration: none;
+  color: #000;
+}
+.scrollGroupPageFileContainerComponent {
   border-bottom: 1px solid rgb(204,204,204);
   padding: 1ch 0;
   break-inside: avoid;
@@ -104,7 +116,7 @@ html {
   text-decoration: none;
   color: #000;
 }
-.scrollArticleDateComponent {
+.scrollDateComponent {
   font-style: italic;
   font-size: 80%;
 }
@@ -129,6 +141,12 @@ html {
   text-align: left;
   margin-top: 2em;
 }
+code {
+  font-size: 90%;
+  background-color: rgba(204,204,204,.5);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
 .scrollCodeBlockComponent {
   overflow: auto;
   font-size: 80%;
@@ -139,7 +157,7 @@ html {
   display: block;
   margin: .5em 0;
   padding: .5em;
-  background: rgba(204,204,204,.5);
+  border-radius: 0;
 }
 .scrollTableComponent {
   table-layout: fixed;
@@ -161,22 +179,49 @@ html {
 .scrollTableComponent tr:nth-child(even) {
   background: rgba(224,224,224,.6);
 }
+.scrollAuthor {
+  font-size: 12px;
+  font-style: italic;
+  margin: 4px 0;
+  text-align: center;
+}
+.scrollKpiTable {
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  break-inside: avoid;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.scrollKpiTable td {
+  width: 33.3%;
+  border: 1px solid #e8e8e8;
+}
+.scrollKpiTable span {
+  font-size: 20p;;
+  display: block;
+}
 .scrollUnorderedListComponent,.scrollOrderedListComponent {
   text-align: left;
   line-height: 1.4em;
   padding-left: 1em;
   margin-top: 0.4em;
 }
-.scrollArticleSourceLinkComponent {
+.scrollFileViewSourceUrlComponent {
   text-align: center;
   font-size: 80%;
   margin: 0;
   margin-top: 0.4em;
   line-height: 1.4em;
 }
-.scrollArticleSourceLinkComponent a {
+.scrollFileViewSourceUrlComponent a {
   color: #000;
   text-decoration: none;
+}
+.scrollContinueReadingLink {
+  display: block;
+  text-align: center;
 }
 .scrollDialogueComponent span {
   font-family: Verdana;
@@ -203,8 +248,18 @@ html {
   text-align: center;
 }
 .scrollImageComponent img {
-  max-width: 35ch;
+  max-width: 98%;
   height: auto;
+}
+.scrollImageComponent figcaption {
+  font-style: italic;
+}
+.scrollKeyboardNav {
+  display: none;
+}
+.scrollCaveat {
+  text-decoration: underline dashed 1px rgba(0,0,0,.1);
+  cursor: default;
 }
 </style>
 </head>
@@ -220,15 +275,14 @@ html {
 </h2>
    <div>A tiny DSL for isomorphic query strings</div>
 </div>
-  <div class="scrollArticlePageComponent" style=""><h1 class="scrollTitleComponent"><a href="index.html">Patch: a tiny DSL for isomorphic query strings</a></h1>
+  <h1 class="scrollFilePageTitle">
+   <a href="index.html">Patch: a tiny DSL for isomorphic query strings</a>
+</h1>
+  <div class="scrollFilePageComponent" style=""><h1 class="scrollTitleComponent"><a href="index.html">Patch: a tiny DSL for isomorphic query strings</a></h1>
 
-<p class="scrollParagraphComponent">Patch is a tiny library with zero external dependencies that
-provides an **immutable** object with 4 isomorphisms that
-maps to URI encoded query strings.</p>
+<p class="scrollParagraphComponent">Patch is a tiny library with zero external dependencies that provides an <strong>immutable</strong> object with 4 isomorphisms that maps to URI encoded query strings.</p>
 
-<p class="scrollParagraphComponent">Patch gets its power from its isomorphisms. With Patch, you
-design your query params so that they map to a TSV document.
-Then Patch encodes and decodes that document.</p>
+<p class="scrollParagraphComponent">Patch gets its power from its isomorphisms. With Patch, you design your query params so that they map to a TSV document. Then Patch encodes and decodes that document.</p>
 
 <h3 class="scrollSectionComponent">Quick Example</h3>
 
@@ -240,11 +294,11 @@ Then Patch encodes and decodes that document.</p>
 
 <p class="scrollParagraphComponent">Serializing this Object Literal into a URL looks like:</p>
 
-<h4 class="scrollSubsectionComponent">Without Patch</h4>
+<h4 class="scrollSectionComponent">Without Patch</h4>
 
 <code class="scrollCodeBlockComponent">selection=Canada&year=2000&tab=map</code>
 
-<h4 class="scrollSubsectionComponent">With Patch</h4>
+<h4 class="scrollSectionComponent">With Patch</h4>
 
 <code class="scrollCodeBlockComponent">patch=selection~Canada...year~2000...tab~map</code>
 
@@ -256,104 +310,81 @@ tab\tmap</code>
 
 <h3 class="scrollSectionComponent">Specification</h3>
 
-<h4 class="scrollSubsectionComponent">The 4 Isomorphisms of Patch</h4>
+<h4 class="scrollSectionComponent">The 4 Isomorphisms of Patch</h4>
 
 <p class="scrollParagraphComponent">A Patch object has 4 forms:</p>
 
-<h4 class="scrollSubsectionComponent">1. URI encoded string form</h4>
+<h4 class="scrollSectionComponent">1. URI encoded string form</h4>
 
 <code class="scrollCodeBlockComponent">countries~Canada~France...year~2020</code>
 
-<h4 class="scrollSubsectionComponent">2. TSV form (or any similarly delimited form)</h4>
+<h4 class="scrollSectionComponent">2. TSV form (or any similarly delimited form)</h4>
 
 <code class="scrollCodeBlockComponent">countries\tCanada\tFrance
 year\t2020</code>
 
-<h4 class="scrollSubsectionComponent">3. JSON Superset Form (AKA Object Literal Form)</h4>
+<h4 class="scrollSectionComponent">3. JSON Superset Form (AKA Object Literal Form)</h4>
 
 <code class="scrollCodeBlockComponent">{
  "countries": ["Canada", "France"],
  "years": ["2020"],
 }</code>
 
-<h4 class="scrollSubsectionComponent">4. Javascript Matrix Form</h4>
+<h4 class="scrollSectionComponent">4. Javascript Matrix Form</h4>
 
 <code class="scrollCodeBlockComponent">[
  ["countries", "Canada", "France"],
  ["years", "2020", "France],
 ]</code>
 
-<p class="scrollParagraphComponent">Note: if you use form #3 and have duplicate identifiers, be
-sure to parse yourself as JSON does not support duplicate
-identifiers.</p>
+<p class="scrollParagraphComponent">Note: if you use form #3 and have duplicate identifiers, be sure to parse yourself as JSON does not support duplicate identifiers.</p>
 
-<h4 class="scrollSubsectionComponent">Delimiters</h4>
+<h4 class="scrollSectionComponent">Delimiters</h4>
 
-<p class="scrollParagraphComponent">Patch requires 2 delimiters, one for
-separating "rows" and one for separating "columns".
-Currently for the delimiters we use "~" for tabs and "..."
-for newlines. You can change those to suit your own
-preferences or needs.</p>
+<p class="scrollParagraphComponent">Patch requires 2 delimiters, one for separating "rows" and one for separating "columns". Currently for the delimiters we use "~" for tabs and "..." for newlines. You can change those to suit your own preferences or needs.</p>
 
-<h4 class="scrollSubsectionComponent">Versioning</h4>
+<h4 class="scrollSectionComponent">Versioning</h4>
 
-<p class="scrollParagraphComponent">If needed, use semantic versioning, only caring
-about breaking changes so only a major version: `patchVersion=2&patch=`</p>
+<p class="scrollParagraphComponent">If needed, use semantic versioning, only caring about breaking changes so only a major version: <code>patchVersion=2&patch=</code></p>
 
-<h4 class="scrollSubsectionComponent">Spaces</h4>
+<h4 class="scrollSectionComponent">Spaces</h4>
 
-<p class="scrollParagraphComponent">Patch encodes spaces to "+" instead of "%20" and
-uses the standard encoding of "+" to "%2B".</p>
+<p class="scrollParagraphComponent">Patch encodes spaces to "+" instead of "%20" and uses the standard encoding of "+" to "%2B".</p>
 
-<h4 class="scrollSubsectionComponent">URI Encoding</h4>
+<h4 class="scrollSectionComponent">URI Encoding</h4>
 
-<p class="scrollParagraphComponent">String inputs to the Patch constructor are
-assumed to be encoded and will be decoded before parsing.
-Similarly the string output is always encoded.</p>
+<p class="scrollParagraphComponent">String inputs to the Patch constructor are assumed to be encoded and will be decoded before parsing. Similarly the string output is always encoded.</p>
 
 <h3 class="scrollSectionComponent">When to use</h3>
 
 <p class="scrollParagraphComponent">Patch comes in handy when you have 2-D languages that:</p>
 
-<ul class="scrollUnorderedListComponent">
-<li>have state</li>
-<li>that the user can change</li>
-<li>that the user should be able to take with them and rehydrate the class with via URLs</li>
-</ul>
+<ul><li><p class="scrollParagraphComponent">have state</p></li>
+<li><p class="scrollParagraphComponent">that the user can change</p></li>
+<li><p class="scrollParagraphComponent">that the user should be able to take with them and rehydrate the class with via URLs</p></li></ul>
 
 <h3 class="scrollSectionComponent">Context</h3>
 
-<p class="scrollParagraphComponent">QueryString is a domain specific language for describing
-this structure:</p>
+<p class="scrollParagraphComponent">QueryString is a domain specific language for describing this structure:</p>
 
 <code class="scrollCodeBlockComponent">type UrlEncodedString = Omit&lt;string, [RestrictedCharacters]&gt;
 Map&lt;UrlEncodedString, UrlEncodedString&gt;</code>
 
-<p class="scrollParagraphComponent">It has a one very restricted string type, and does not have
-any concept of numbers, booleans, arrays, enums, trees,
-nested maps, et cetera.</p>
+<p class="scrollParagraphComponent">It has a one very restricted string type, and does not have any concept of numbers, booleans, arrays, enums, trees, nested maps, et cetera.</p>
 
-<p class="scrollParagraphComponent">It is a very low level DSL; arguably adds little to no value
-on top of just a single string.</p>
+<p class="scrollParagraphComponent">It is a very low level DSL; arguably adds little to no value on top of just a single string.</p>
 
-<p class="scrollParagraphComponent">Patch is a DSL let's you use any data structure you want and
-handles the compiling/decompiling to QueryString, while
-preserving human readability.</p>
+<p class="scrollParagraphComponent">Patch is a DSL let's you use any data structure you want and handles the compiling/decompiling to QueryString, while preserving human readability.</p>
 
-<p class="scrollParagraphComponent">JSON would be a similar alternative to Patch, except you
-completely lose human readability in query strings, and it
-suffers from JSONs lack of certain data structures, like
-tuple arrays.</p>
+<p class="scrollParagraphComponent">JSON would be a similar alternative to Patch, except you completely lose human readability in query strings, and it suffers from JSONs lack of certain data structures, like tuple arrays.</p>
 
 <h3 class="scrollSectionComponent">Some benefits of Patch</h3>
 
-<ul class="scrollUnorderedListComponent">
-<li>A single place to encode and decode your params. Just encode/decode the whole patch. Do not decode/encode N times for every parameter nor invent a special encoding scheme for each param.</li>
-<li>Cleanly encodes arrays and nested structures.</li>
-<li>Improved human readability for short params; greatly improved readability for complex params.</li>
-<li>Versioning with easy upgrading.</li>
-<li>Very easy to debug—it's just a patch!</li>
-</ul>
+<ul><li><p class="scrollParagraphComponent">A single place to encode and decode your params. Just encode/decode the whole patch. Do not decode/encode N times for every parameter nor invent a special encoding scheme for each param.</p></li>
+<li><p class="scrollParagraphComponent">Cleanly encodes arrays and nested structures.</p></li>
+<li><p class="scrollParagraphComponent">Improved human readability for short params; greatly improved readability for complex params.</p></li>
+<li><p class="scrollParagraphComponent">Versioning with easy upgrading.</p></li>
+<li><p class="scrollParagraphComponent">Very easy to debug—it's just a patch!</p></li></ul>
 
 <h3 class="scrollSectionComponent">History</h3>
 
@@ -361,14 +392,19 @@ tuple arrays.</p>
 
 
 
-<p class="scrollArticleSourceLinkComponent"><a href="https://github.com/breck7/patch/tree/master/readme.scroll">Article source</a></p></div>
+
+
+
+
+
+<p class="scrollFileViewSourceUrlComponent"><a href="https://github.com/breck7/patch/tree/master/readme.scroll">View source</a></p></div>
   <div class="scrollFooterComponent">
    <div class="scrollSocialMediaIconsComponent">
     <a href="mailto:patch@breckyunits.com"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail icon</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></a>
     <a href="https://twitter.com/breckyunits"><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Twitter icon</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
     <a href="https://github.com/breck7/patch"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub icon</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
 </div>
-   <a href="https://scroll.pub" class="scrollCommunityLinkComponent">Built with Scroll v22.3.0</a>
+   <a href="https://scroll.pub" class="scrollCommunityLinkComponent">Built with Scroll v35.1.0</a>
 </div>
 </body>
 </html>
