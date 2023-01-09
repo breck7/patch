@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "Tiny DS for isomorphic query strings with zero dependencies",
 	"main": "patch.js",
+	"prettier": {
+		"semi": false
+	},
 	"scripts": {
 		"test": "node patch.test.js"
 	},
